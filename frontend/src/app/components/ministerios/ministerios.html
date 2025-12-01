@@ -1,0 +1,27 @@
+<div class="bg-ministerios">
+    <div class="page-overlay">
+        <div class="container my-5" style="padding-top: 80px; padding-bottom: 80px;">
+            <h2 class="text-center mb-4 text-white">Nuestros Ministerios</h2>
+
+            <div class="row">
+                <div class="col-md-4 mb-4" *ngFor="let ministerio of ministerios">
+                    <div class="card card-hover h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-center" style="color: var(--color-turquesa);">{{
+                                ministerio.nombre
+                                }}
+                            </h5>
+                            <p class="card-text">{{ ministerio.descripcion }}</p>
+                            <p class="text-muted"><strong>Responsable:</strong> {{ ministerio.responsable }}</p>
+                            <img src="{{ ministerio.imagen }}" alt="{{ ministerio.nombre }}" class="img-fluid"> <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info text-center mt-4" *ngIf="ministerios.length === 0">
+                No hay ministerios disponibles en este momento.
+            </div>
+        </div>
+    </div>
+</div>

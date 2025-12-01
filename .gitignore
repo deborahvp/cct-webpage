@@ -1,0 +1,27 @@
+#Estos archivos son los que no se subirán a Git!! 
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Angular
+frontend/.angular/
+frontend/dist/
+frontend/.cache/
+
+# Build / logs
+dist/
+tmp/
+*.log
+
+# Environment files
+*.env
+.env.local
+.env.development
+.env.production
+
+# IDE
+.vscode/
+.idea/
+.DS_Store

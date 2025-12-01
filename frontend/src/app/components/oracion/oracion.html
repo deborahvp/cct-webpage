@@ -1,0 +1,69 @@
+<div class="bg-oracion">
+    <div class="page-overlay">
+        <div class="container my-5" style="padding-top: 80px; padding-bottom: 80px;">
+            <h2 class="text-center mb-4 text-white">Peticiones de Oración</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow-lg">
+                        <div class="card-body p-4">
+                            <div class="alert alert-success" *ngIf="submitted">
+                                ¡Petición de oración enviada correctamente! Estaremos orando por ti.
+                            </div>
+                            <div class="alert alert-danger" *ngIf="error">
+                                {{ error }}
+                            </div>
+
+                            <form (ngSubmit)="onSubmit()" #oracionForm="ngForm">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Nombre *</label>
+                                    <input type="text" class="form-control" [(ngModel)]="formData.nombre" name="nombre"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Correo *</label>
+                                    <input type="email" class="form-control" [(ngModel)]="formData.correo" name="correo"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Teléfono *</label>
+                                    <input type="tel" class="form-control" [(ngModel)]="formData.telefono"
+                                        name="telefono" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Motivo de Oración *</label>
+                                    <textarea class="form-control" rows="5" [(ngModel)]="formData.motivo" name="motivo"
+                                        required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Ministerio (opcional)</label>
+                                    <select class="form-select" [(ngModel)]="formData.id_ministerio"
+                                        name="id_ministerio">
+                                        <option value="">-- Ninguno --</option>
+                                        <option *ngFor="let ministerio of ministerios"
+                                            [value]="ministerio.id_ministerio">
+                                            {{ ministerio.nombre }}
+                                        </option>
+                                    </select>
+                                    <small class="text-muted">Si deseas que un ministerio específico ore por ti,
+                                        selecciónalo aquí</small>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input"
+                                        [(ngModel)]="formData.desea_ser_contactado" name="desea_ser_contactado"
+                                        id="contactoCheck">
+                                    <label class="form-check-label fw-bold" for="contactoCheck">
+                                        Deseo ser contactado para recibir apoyo
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100"
+                                    [disabled]="!oracionForm.form.valid">Enviar
+                                    Petición</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
